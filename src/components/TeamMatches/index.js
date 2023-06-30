@@ -37,7 +37,7 @@ class TeamMatches extends Component {
     const {params} = match
     const {id} = params
 
-    const response = await fetch(`${teamMatchesApiUrl}/${id}`)
+    const response = await fetch(${teamMatchesApiUrl}${id}) 
     const fetchedData = await response.json()
     const formattedData = {
       teamBannerURL: fetchedData.team_banner_url,
@@ -45,9 +45,8 @@ class TeamMatches extends Component {
       recentMatches: fetchedData.recent_matches.map(eachMatch =>
         this.getFormattedData(eachMatch),
       ),
-    }
-
-    this.setState({teamMatchesData: formattedData, isLoading: true})
+    } 
+    this.setState({teamMatchesData: formattedData, isLoading: false})
   }
 
   renderRecentMatchesList = () => {
